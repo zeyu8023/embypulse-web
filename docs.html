@@ -59,6 +59,9 @@
 <a href="#tmdb-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">TMDB 配置</a>
 <a href="#mp-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">MoviePilot</a>
 <a href="#plugins" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">插件系统</a>
+<a href="#ports" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">端口说明</a>
+<a href="#backup" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">备份恢复</a>
+<a href="#security" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">安全建议</a>
 <a href="#faq" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">常见问题</a>
 </nav>
 </div>
@@ -80,6 +83,9 @@
 <a href="#tmdb-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">TMDB 配置</a>
 <a href="#mp-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">MoviePilot</a>
 <a href="#plugins" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">插件系统</a>
+<a href="#ports" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">端口说明</a>
+<a href="#backup" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">备份恢复</a>
+<a href="#security" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">安全建议</a>
 <a href="#faq" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">常见问题</a>
 </nav>
 </div>
@@ -342,6 +348,99 @@ services:
 <p class="font-medium">说明</p>
 <p class="mt-1">插件可在后台「系统设置 > 插件管理」中启用或禁用。Pro专享插件需要授权才能使用。</p>
 </div>
+</div>
+</div>
+</section>
+
+<section id="ports" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 flex-shrink-0 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 flex items-center justify-center"><i data-lucide="network" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">端口说明</h1>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800">
+<tr><th class="px-4 py-3 text-left font-semibold">端口</th><th class="px-4 py-3 text-left font-semibold">服务</th><th class="px-4 py-3 text-left font-semibold">说明</th></tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">10307</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">管理后台</td><td class="px-4 py-3 text-slate-500">管理员控制面板，配置管理、用户管理等</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">10308</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">用户中心</td><td class="px-4 py-3 text-slate-500">用户自助服务，查看播放记录、积分等</td></tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+<div class="flex items-start space-x-3">
+<i data-lucide="info" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i>
+<div class="text-sm text-blue-700 dark:text-blue-300">
+<p class="font-medium">端口修改</p>
+<p class="mt-1">通过环境变量 <code class="bg-blue-100 dark:bg-blue-800 px-1 rounded">PORT</code> 和 <code class="bg-blue-100 dark:bg-blue-800 px-1 rounded">REQUEST_PORT</code> 可自定义端口。使用 <code class="bg-blue-100 dark:bg-blue-800 px-1 rounded">network_mode: host</code> 时直接访问对应端口。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="backup" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 flex-shrink-0 rounded-lg bg-gradient-to-r from-emerald-500 to-green-500 flex items-center justify-center"><i data-lucide="hard-drive" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">备份恢复</h1>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-white"><i data-lucide="folder" class="w-4 h-4 mr-2 text-primary-500"></i>数据目录</h3>
+<ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+<li><code class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">/workspace/config</code> - 配置文件目录</li>
+<li><code class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">/workspace/data</code> - 数据库文件目录（IP归属地等）</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-white"><i data-lucide="download" class="w-4 h-4 mr-2 text-primary-500"></i>备份方法</h3>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 text-sm">
+<pre class="text-slate-700 dark:text-slate-300 whitespace-pre-wrap">docker exec emby-pulse tar -czvf /tmp/backup.tar.gz /workspace/config /workspace/data
+docker cp emby-pulse:/tmp/backup.tar.gz ./embypulse-backup-$(date +%Y%m%d).tar.gz</pre>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-white"><i data-lucide="upload" class="w-4 h-4 mr-2 text-primary-500"></i>恢复方法</h3>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 text-sm">
+<pre class="text-slate-700 dark:text-slate-300 whitespace-pre-wrap">docker cp ./embypulse-backup.tar.gz emby-pulse:/tmp/
+docker exec emby-pulse tar -xzvf /tmp/embypulse-backup.tar.gz -C /</pre>
+</div>
+</div>
+</div>
+</section>
+
+<section id="security" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 flex-shrink-0 rounded-lg bg-gradient-to-r from-rose-500 to-red-500 flex items-center justify-center"><i data-lucide="shield-check" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">安全建议</h1>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-white"><i data-lucide="lock" class="w-4 h-4 mr-2 text-green-500"></i>访问控制</h3>
+<ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1.5">
+<li>1. 使用反向代理（Nginx/Caddy）配置 HTTPS</li>
+<li>2. 配置防火墙限制访问 IP 范围</li>
+<li>3. 修改默认端口避免扫描</li>
+<li>4. 定期更换 Emby API Key</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-white"><i data-lucide="key" class="w-4 h-4 mr-2 text-amber-500"></i>密钥管理</h3>
+<ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1.5">
+<li>1. 不要将 API Key 硬编码在配置文件中</li>
+<li>2. 使用环境变量或 Docker Secrets 管理敏感信息</li>
+<li>3. 定期轮换 Telegram Bot Token</li>
+<li>4. Webhook Token 使用强随机字符串</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-white"><i data-lucide="eye" class="w-4 h-4 mr-2 text-blue-500"></i>监控审计</h3>
+<ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1.5">
+<li>1. 定期检查风控执法记录</li>
+<li>2. 监控异常登录行为</li>
+<li>3. 关注 Telegram 告警通知</li>
+<li>4. 定期审查用户权限</li>
+</ul>
 </div>
 </div>
 </section>
