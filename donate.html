@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang='zh-CN' class='scroll-smooth'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>捐赠支持 | EmbyPulse-Pro</title>
+<link rel='icon' type='image/png' href='img/favicon.png'>
+<script src='https://cdn.tailwindcss.com'></script>
+<script src='https://unpkg.com/lucide@latest'></script>
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' rel='stylesheet'>
+<script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']},colors:{primary:{500:'#0ea5e9'},accent:{500:'#8b5cf6'}}}}}</script>
+<style>.gradient-text{background:linear-gradient(135deg,#0ea5e9 0,#8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav-blur{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}</style>
+</head>
+<body class='bg-white dark:bg-slate-950 text-slate-900 dark:text-white font-sans'>
+<nav class='fixed top-0 left-0 right-0 z-50 nav-blur bg-white/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/50'>
+<div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+<div class='flex items-center justify-between h-14 sm:h-16'>
+<div class='flex items-center space-x-2 sm:space-x-3'>
+<a href='index.html'><img id='logo-img' src='img/logo-app.png' alt='Logo' class='h-7 sm:h-8 w-auto'></a>
+<a href='index.html' class='text-base sm:text-lg font-bold'>EmbyPulse-Pro</a>
+</div>
+<div class='hidden md:flex items-center space-x-1'>
+<a href='index.html' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>首页</a>
+<a href='index.html#features' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>功能</a>
+<a href='docs.html' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>文档</a>
+<a href='donate.html' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>捐赠</a>
+</div>
+<div class='flex items-center space-x-1 sm:space-x-2'>
+<button id='theme-toggle' class='p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'><i data-lucide='sun' class='w-4 h-4 sm:w-5 sm:h-5 hidden dark:block'></i><i data-lucide='moon' class='w-4 h-4 sm:w-5 sm:h-5 block dark:hidden'></i></button>
+<a href='https://t.me/Emby_Pulse' target='_blank' class='p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'><i data-lucide='send' class='w-4 h-4 sm:w-5 sm:h-5'></i></a>
+<button id='mobile-menu-btn' class='md:hidden p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'><i data-lucide='menu' class='w-4 h-4 sm:w-5 sm:h-5'></i></button>
+</div>
+</div>
+</div>
+<div id='mobile-menu' class='hidden md:hidden border-t border-slate-200 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95'>
+<div class='px-4 py-3 space-y-1'>
+<a href='index.html' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>首页</a>
+<a href='index.html#features' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>功能</a>
+<a href='docs.html' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>文档</a>
+<a href='donate.html' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>捐赠</a>
+</div>
+</div>
+</nav>
+
+<main class='pt-14 sm:pt-16'>
+<div class='max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16'>
+<div class='text-center mb-8 sm:mb-12'>
+<h1 class='text-3xl sm:text-4xl font-bold mb-4'>捐赠支持</h1>
+<p class='text-slate-500 dark:text-slate-400'>如果觉得 EmbyPulse-Pro 好用，欢迎赞赏支持持续迭代</p>
+</div>
+
+<div class='bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 text-center mb-8'>
+<img src='img/zanshangma.png' alt='赞赏码' class='w-72 sm:w-80 h-auto mx-auto rounded-xl shadow-lg mb-6'>
+<div class='flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4'>
+<a href='https://t.me/Emby_Pulse' target='_blank' class='w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg font-semibold hover:opacity-90 text-white text-sm sm:text-base'><i data-lucide='send' class='w-4 h-4 sm:w-5 sm:h-5 mr-2'></i>加入 Telegram 群组</a>
+</div>
+</div>
+
+<div class='bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-6 mb-8'>
+<h3 class='font-semibold mb-3 flex items-center text-primary-500'><i data-lucide='key' class='w-5 h-5 mr-2'></i>Pro版授权</h3>
+<div class='text-slate-600 dark:text-slate-300 text-sm sm:text-base space-y-3'>
+<p><strong>捐赠 79 元</strong>并备注邮箱，获取 Pro 版授权码</p>
+<p class='text-slate-500 dark:text-slate-400'>捐赠后请检查邮箱邮件（包括垃圾箱），如未收到请进交流群联系管理员</p>
+</div>
+</div>
+
+</div>
+</main>
+
+<footer class='py-8 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800'>
+<div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 dark:text-slate-500 text-sm'>
+<p>EmbyPulse-Pro Team 2024-2025</p>
+</div>
+</footer>
+
+<script>
+lucide.createIcons();
+const themeToggle=document.getElementById('theme-toggle'),html=document.documentElement,logoImg=document.getElementById('logo-img');
+const getThemePreference=()=>{if(typeof localStorage!=='undefined'&&localStorage.getItem('theme'))return localStorage.getItem('theme');return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'};
+const setTheme=theme=>{if(theme==='dark'){html.classList.add('dark');if(logoImg)logoImg.src='img/logo-light.png';}else{html.classList.remove('dark');if(logoImg)logoImg.src='img/logo-app.png';}localStorage.setItem('theme',theme);};
+setTheme(getThemePreference());
+themeToggle.addEventListener('click',()=>{const newTheme=html.classList.contains('dark')?'light':'dark';setTheme(newTheme);lucide.createIcons();});
+const mobileMenuBtn=document.getElementById('mobile-menu-btn'),mobileMenu=document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('hidden'));
+mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>mobileMenu.classList.add('hidden')));
+</script>
+</body>
+</html>

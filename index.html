@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang='zh-CN' class='scroll-smooth'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>EmbyPulse-Pro | Emby服务器专业管理工具</title>
+<meta name='description' content='风险管控 · 智能运维'>
+<link rel='icon' type='image/png' href='img/favicon.png'>
+<script src='https://cdn.tailwindcss.com'></script>
+<script src='https://unpkg.com/lucide@latest'></script>
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+<script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']},colors:{primary:{500:'#0ea5e9'},accent:{500:'#8b5cf6'}}}}}</script>
+<style>.gradient-text{background:linear-gradient(135deg,#0ea5e9 0,#8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-gradient{background:linear-gradient(135deg,#f8fafc 0,#f1f5f9 50%,#f8fafc 100%)}.dark .hero-gradient{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0f172a 100%)}.card-hover{transition:all .3s ease}.card-hover:hover{transform:translateY(-4px)}.dark .card-hover:hover{box-shadow:0 20px 40px -12px rgba(0,0,0,.3)}.card-hover:hover{box-shadow:0 20px 40px -12px rgba(0,0,0,.12)}.nav-blur{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.tab-active{background:linear-gradient(135deg,#0ea5e9 0,#8b5cf6 100%);color:white}.icon-blue{background:linear-gradient(135deg,#3b82f6 0,#1d4ed8 100%)}.icon-purple{background:linear-gradient(135deg,#8b5cf6 0,#6d28d9 100%)}.icon-green{background:linear-gradient(135deg,#10b981 0,#059669 100%)}.icon-orange{background:linear-gradient(135deg,#f59e0b 0,#d97706 100%)}.icon-pink{background:linear-gradient(135deg,#ec4899 0,#be185d 100%)}.icon-cyan{background:linear-gradient(135deg,#06b6d4 0,#0891b2 100%)}.icon-red{background:linear-gradient(135deg,#ef4444 0,#b91c1c 100%)}.icon-indigo{background:linear-gradient(135deg,#6366f1 0,#4338ca 100%)}</style>
+</head>
+<body class='bg-white dark:bg-slate-950 text-slate-900 dark:text-white font-sans'>
+<nav id='navbar' class='fixed top-0 left-0 right-0 z-50 nav-blur bg-white/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/50'>
+<div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+<div class='flex items-center justify-between h-14 sm:h-16'>
+<div class='flex items-center space-x-2 sm:space-x-3'>
+<img id='logo-img' src='img/logo-app.png' alt='Logo' class='h-7 sm:h-8 w-auto'>
+<span class='text-base sm:text-lg font-bold'>EmbyPulse-Pro</span>
+</div>
+<div class='hidden md:flex items-center space-x-1'>
+<a href='#home' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>首页</a>
+<a href='#features' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>功能</a>
+<a href='docs.html' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>文档</a>
+<a href='donate.html' class='px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>捐赠</a>
+</div>
+<div class='flex items-center space-x-1 sm:space-x-2'>
+<button id='theme-toggle' class='p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'><i data-lucide='sun' class='w-4 h-4 sm:w-5 sm:h-5 hidden dark:block'></i><i data-lucide='moon' class='w-4 h-4 sm:w-5 sm:h-5 block dark:hidden'></i></button>
+<a href='https://t.me/Emby_Pulse' target='_blank' class='p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'><i data-lucide='send' class='w-4 h-4 sm:w-5 sm:h-5'></i></a>
+<button id='mobile-menu-btn' class='md:hidden p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'><i data-lucide='menu' class='w-4 h-4 sm:w-5 sm:h-5'></i></button>
+</div>
+</div>
+</div>
+<div id='mobile-menu' class='hidden md:hidden border-t border-slate-200 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95'>
+<div class='px-4 py-3 space-y-1'>
+<a href='#home' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>首页</a>
+<a href='#features' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>功能</a>
+<a href='docs.html' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>文档</a>
+<a href='donate.html' class='block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'>捐赠</a>
+</div>
+</div>
+</nav>
+
+<section id='home' class='pt-14 sm:pt-16 hero-gradient'>
+<div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20'>
+<div class='grid lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
+<div class='text-center lg:text-left order-2 lg:order-1'>
+<div class='inline-flex items-center space-x-2 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1 mb-4 sm:mb-6'>
+<span class='w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full animate-pulse'></span>
+<span class='text-xs sm:text-sm text-slate-600 dark:text-slate-300'>Pro版现已发布</span>
+</div>
+<h1 class='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4'><span class='gradient-text'>EmbyPulse-Pro</span></h1>
+<p class='text-lg sm:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 mb-2 sm:mb-3'>Emby服务器专业级管理中枢</p>
+<p class='text-sm sm:text-base lg:text-lg text-slate-500 dark:text-slate-400 mb-6 sm:mb-8'>风险管控 · 智能运维</p>
+<div class='flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8'>
+<a href='docs.html' class='w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg font-semibold hover:opacity-90 text-center text-sm sm:text-base text-white'>快速开始</a>
+</div>
+<div class='grid grid-cols-4 gap-2 sm:gap-4 text-center'>
+<div><div class='text-xl sm:text-2xl lg:text-3xl font-bold gradient-text'>11+</div><div class='text-xs sm:text-sm text-slate-500 dark:text-slate-400'>功能模块</div></div>
+<div><div class='text-xl sm:text-2xl lg:text-3xl font-bold gradient-text'>5+</div><div class='text-xs sm:text-sm text-slate-500 dark:text-slate-400'>Pro插件</div></div>
+<div><div class='text-xl sm:text-2xl lg:text-3xl font-bold gradient-text'>Docker</div><div class='text-xs sm:text-sm text-slate-500 dark:text-slate-400'>一键部署</div></div>
+<div><div class='text-xl sm:text-2xl lg:text-3xl font-bold gradient-text'>MIT</div><div class='text-xs sm:text-sm text-slate-500 dark:text-slate-400'>开源协议</div></div>
+</div>
+</div>
+<div class='order-1 lg:order-2'>
+<div class='relative'>
+<div class='absolute -inset-4 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-2xl blur-2xl'></div>
+<div class='relative bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden'>
+<div class='flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50'>
+<div class='w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-400'></div>
+<div class='w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-400'></div>
+<div class='w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-400'></div>
+</div>
+<img id='hero-preview' src='img/PC/White/1.png' alt='Preview' class='w-full h-auto'>
+</div>
+</div>
+<div class='flex justify-center gap-2 mt-4'>
+<button onclick='changePreview(1)' class='preview-thumb w-16 h-10 sm:w-20 sm:h-12 rounded-lg overflow-hidden border-2 border-primary-500'><img src='img/PC/White/1.png' alt='1' class='w-full h-full object-cover'></button>
+<button onclick='changePreview(2)' class='preview-thumb w-16 h-10 sm:w-20 sm:h-12 rounded-lg overflow-hidden border-2 border-slate-200 dark:border-slate-700 hover:border-primary-400'><img src='img/PC/White/2.png' alt='2' class='w-full h-full object-cover'></button>
+<button onclick='changePreview(3)' class='preview-thumb w-16 h-10 sm:w-20 sm:h-12 rounded-lg overflow-hidden border-2 border-slate-200 dark:border-slate-700 hover:border-primary-400'><img src='img/PC/White/3.png' alt='3' class='w-full h-full object-cover'></button>
+<button onclick='changePreview(4)' class='preview-thumb w-16 h-10 sm:w-20 sm:h-12 rounded-lg overflow-hidden border-2 border-slate-200 dark:border-slate-700 hover:border-primary-400'><img src='img/PC/White/4.png' alt='4' class='w-full h-full object-cover'></button>
+<button onclick='changePreview(5)' class='preview-thumb w-16 h-10 sm:w-20 sm:h-12 rounded-lg overflow-hidden border-2 border-slate-200 dark:border-slate-700 hover:border-primary-400'><img src='img/PC/White/5.png' alt='5' class='w-full h-full object-cover'></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id='features' class='py-12 sm:py-16 lg:py-24 bg-slate-50 dark:bg-slate-900'>
+<div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+<div class='text-center mb-8 sm:mb-12 lg:mb-16'>
+<h2 class='text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4'>功能介绍</h2>
+<p class='text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto'>EmbyPulse-Pro为Emby服务器提供全方位专业管理能力</p>
+</div>
+<div class='flex flex-wrap justify-center gap-2 mb-6 sm:mb-8 lg:mb-12'>
+<button class='feature-tab tab-active px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium' data-tab='pro'>Pro独占特性</button>
+<button class='feature-tab px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700' data-tab='core'>核心功能</button>
+<button class='feature-tab px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700' data-tab='plugins'>插件系统</button>
+</div>
+
+<div id='tab-pro' class='feature-content'>
+<div class='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-red w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='shield' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>风险管控引擎</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>并发检测：实时监控多设备并发播放</li><li>违规拦截：自动识别异常账号</li><li>VIP豁免：VIP用户可跳过风控</li><li>执法记录：完整操作日志追溯</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-orange w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='gift' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>积分系统</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>每日签到：随机积分奖励</li><li>积分商城：兑换账号续期等</li><li>消费扣费：求片扣费场景</li><li>积分流水：完整收支记录</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-purple w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='sparkles' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>智能合集</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>TMDB热门：同步热门电影剧集</li><li>正在热播：追踪连载剧集</li><li>自动更新保持新鲜度</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-cyan w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='clock' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>保号规则</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>播放要求：设置每月最低时长</li><li>自动处理不达标账号</li><li>VIP用户豁免规则</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-blue w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='bot' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>Telegram机器人</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>实时推送播放通知</li><li>风控告警异常登录</li><li>交互指令stats/search</li><li>客户端拦截自动踢出</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-indigo w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='key' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>注册码管理</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>注册码批量生成</li><li>续费码批量生成</li><li>导出管理功能</li></ul>
+</div>
+</div>
+</div>
+
+<div id='tab-core' class='feature-content hidden'>
+<div class='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-blue w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='layout-dashboard' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>全景仪表盘</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>实时并发播放监控</li><li>IP归属地精确显示</li><li>播放趋势动态图表</li><li>CPU内存存储监控</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-green w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='list-x' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>缺集管理</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>全库扫描比对TMDB</li><li>精准识别缺失集数</li><li>MoviePilot一键搜索</li><li>下载截胡自动剔除</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-orange w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='calendar' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>追剧日历</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>全球热播剧集更新表</li><li>红绿灯状态标识入库</li><li>一键跳转播放搜索</li><li>个人追剧列表管理</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-pink w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='clapperboard' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>求片系统</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>用户提交影片请求</li><li>完整状态链路追踪</li><li>入库自动闭环通知</li><li>Telegram求片交互</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-purple w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='user' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>用户中心</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>账号信息到期VIP标识</li><li>用户画像成就勋章</li><li>播放历史活跃趋势</li><li>观影偏好分析</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-cyan w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='bar-chart-3' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>数据洞察</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>趣味成就系统</li><li>入驻溯源精确天数</li><li>画质审计4K/HDR占比</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-indigo w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='image' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>映迹工坊</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>多维报表日报周报</li><li>精美主题黑金赛博</li><li>一键生成长图</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-blue w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='bot' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>Telegram机器人</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>实时推送播放通知</li><li>风控告警异常登录</li><li>交互指令stats/search</li></ul>
+</div>
+<div class='bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-6 card-hover'>
+<div class='icon-red w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3 sm:mb-4'><i data-lucide='settings' class='w-5 h-5 sm:w-6 sm:h-6 text-white'></i></div>
+<h3 class='text-base sm:text-lg font-semibold mb-1.5 sm:mb-2'>系统运维</h3>
+<ul class='text-slate-500 dark:text-slate-400 text-xs sm:text-sm space-y-0.5 sm:space-y-1'><li>可视化管理计划任务</li><li>实时日志网页查看</li><li>数据库工具备份修复</li></ul>
+</div>
+</div>
+</div>
+
+<div id='tab-plugins' class='feature-content hidden'>
+<div class='overflow-x-auto'>
+<table class='w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden text-sm'>
+<thead class='bg-slate-100 dark:bg-slate-700'><tr><th class='px-4 sm:px-6 py-3 sm:py-4 text-left font-semibold'>插件</th><th class='px-4 sm:px-6 py-3 sm:py-4 text-left font-semibold'>功能</th><th class='hidden sm:table-cell px-6 py-4 text-left font-semibold'>状态</th></tr></thead>
+<tbody class='divide-y divide-slate-200 dark:divide-slate-700'>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-purple-500/20 text-purple-500 rounded-full text-xs'>用户到期提醒</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>用户到期自动提醒通知</td><td class='hidden sm:table-cell px-6 py-4 text-purple-500 text-xs'>Pro专享</td></tr>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300 rounded-full text-xs'>115网盘转存</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>链接自动转存到115网盘</td><td class='hidden sm:table-cell px-6 py-4 text-slate-500 text-xs'>内置</td></tr>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300 rounded-full text-xs'>影巢资源中心</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>对接影巢资源站</td><td class='hidden sm:table-cell px-6 py-4 text-slate-500 text-xs'>内置</td></tr>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-purple-500/20 text-purple-500 rounded-full text-xs'>保号规则</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>播放时长达标检测</td><td class='hidden sm:table-cell px-6 py-4 text-purple-500 text-xs'>Pro专享</td></tr>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-purple-500/20 text-purple-500 rounded-full text-xs'>媒体库封面管理</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>快速更新媒体库封面图</td><td class='hidden sm:table-cell px-6 py-4 text-purple-500 text-xs'>Pro专享</td></tr>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300 rounded-full text-xs'>自定义通知模板</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>动漫风幽默风等风格</td><td class='hidden sm:table-cell px-6 py-4 text-slate-500 text-xs'>内置</td></tr>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-purple-500/20 text-purple-500 rounded-full text-xs'>Emby智能合集</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>TMDB热门合集自动更新</td><td class='hidden sm:table-cell px-6 py-4 text-purple-500 text-xs'>Pro专享</td></tr>
+<tr class='hover:bg-slate-50 dark:hover:bg-slate-700/50'><td class='px-4 sm:px-6 py-3 sm:py-4'><span class='inline-flex items-center px-2 sm:px-3 py-1 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300 rounded-full text-xs'>观影报告</span></td><td class='px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-300'>多维报表精美主题</td><td class='hidden sm:table-cell px-6 py-4 text-slate-500 text-xs'>内置</td></tr>
+</tbody>
+</table>
+</div>
+<div class='mt-4 sm:mt-6 flex items-center space-x-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400'>
+<span class='inline-flex items-center px-2 sm:px-3 py-1 bg-purple-500/20 text-purple-500 rounded-full text-xs'>Pro专享</span>
+<span>Pro版独占插件提供更强大功能</span>
+</div>
+</div>
+</div>
+</section>
+
+<footer class='py-8 sm:py-12 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800'>
+<div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+<div class='flex flex-col sm:flex-row items-center justify-between gap-4'>
+<div class='flex items-center space-x-2 sm:space-x-3'>
+<img id='footer-logo' src='img/logo-app.png' alt='Logo' class='h-6 sm:h-8 w-auto'>
+<span class='text-base sm:text-lg font-bold'>EmbyPulse-Pro</span>
+</div>
+<div class='flex items-center space-x-4 sm:space-x-6 text-slate-500 dark:text-slate-400 text-sm'>
+<a href='https://t.me/Emby_Pulse' target='_blank' class='hover:text-slate-900 dark:hover:text-white transition-colors flex items-center space-x-1'><i data-lucide='send' class='w-4 h-4 sm:w-5 sm:h-5'></i><span class='hidden sm:inline'>Telegram</span></a>
+</div>
+</div>
+<div class='mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 dark:text-slate-500 text-xs sm:text-sm'>
+<p>EmbyPulse-Pro Team 2024-2025</p>
+</div>
+</div>
+</footer>
+
+<script>
+lucide.createIcons();
+const themeToggle=document.getElementById('theme-toggle'),html=document.documentElement,logoImg=document.getElementById('logo-img'),heroPreview=document.getElementById('hero-preview'),footerLogo=document.getElementById('footer-logo'),previewThumbs=document.querySelectorAll('.preview-thumb');
+const getThemePreference=()=>{if(typeof localStorage!=='undefined'&&localStorage.getItem('theme'))return localStorage.getItem('theme');return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'};
+const setTheme=theme=>{if(theme==='dark'){html.classList.add('dark');if(logoImg)logoImg.src='img/logo-light.png';if(heroPreview)heroPreview.src='img/PC/Black/1.png';if(footerLogo)footerLogo.src='img/logo-light.png';previewThumbs.forEach((t,i)=>{const img=t.querySelector('img');if(img)img.src='img/PC/Black/'+(i+1)+'.png';});}else{html.classList.remove('dark');if(logoImg)logoImg.src='img/logo-app.png';if(heroPreview)heroPreview.src='img/PC/White/1.png';if(footerLogo)footerLogo.src='img/logo-app.png';previewThumbs.forEach((t,i)=>{const img=t.querySelector('img');if(img)img.src='img/PC/White/'+(i+1)+'.png';});}localStorage.setItem('theme',theme);};
+setTheme(getThemePreference());
+themeToggle.addEventListener('click',()=>{const newTheme=html.classList.contains('dark')?'light':'dark';setTheme(newTheme);lucide.createIcons();});
+const mobileMenuBtn=document.getElementById('mobile-menu-btn'),mobileMenu=document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('hidden'));
+mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>mobileMenu.classList.add('hidden')));
+const featureTabs=document.querySelectorAll('.feature-tab'),featureContents=document.querySelectorAll('.feature-content');
+featureTabs.forEach(tab=>{tab.addEventListener('click',()=>{const targetTab=tab.dataset.tab;featureTabs.forEach(t=>{t.classList.remove('tab-active');t.classList.add('bg-slate-100','dark:bg-slate-800','text-slate-600','dark:text-slate-300');});tab.classList.add('tab-active');tab.classList.remove('bg-slate-100','dark:bg-slate-800','text-slate-600','dark:text-slate-300');featureContents.forEach(content=>{content.id==='tab-'+targetTab?content.classList.remove('hidden'):content.classList.add('hidden');});});});
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{if(window.pageYOffset>100)navbar.classList.add('bg-white/95','dark:bg-slate-950/95');else navbar.classList.remove('bg-white/95','dark:bg-slate-950/95');});
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const target=document.querySelector(this.getAttribute('href'));if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});});
+function changePreview(n){const heroPreview=document.getElementById('hero-preview');const theme=html.classList.contains('dark')?'Black':'White';heroPreview.src='img/PC/'+theme+'/'+n+'.png';document.querySelectorAll('.preview-thumb').forEach((t,i)=>{t.classList.toggle('border-primary-500',i===n-1);t.classList.toggle('border-slate-200',i!==n-1);t.classList.toggle('dark:border-slate-700',i!==n-1);});}
+</script>
+</body>
+</html>

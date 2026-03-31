@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文档 | EmbyPulse-Pro</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']},colors:{primary:{500:'#0ea5e9'},accent:{500:'#8b5cf6'}}}}}</script>
+<style>.gradient-text{background:linear-gradient(135deg,#0ea5e9 0,#8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav-blur{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.sidebar-link{transition:all .2s ease}.sidebar-link.active{color:#0ea5e9;background:linear-gradient(90deg,rgba(14,165,233,0.1) 0,transparent 100%)}.sidebar-link:hover{color:#0ea5e9}</style>
+</head>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white font-sans">
+<nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-white/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-14 sm:h-16">
+<div class="flex items-center space-x-2 sm:space-x-3">
+<a href="index.html"><img id="logo-img" src="img/logo-app.png" alt="Logo" class="h-7 sm:h-8 w-auto"></a>
+<a href="index.html" class="text-base sm:text-lg font-bold">EmbyPulse-Pro</a>
+</div>
+<div class="hidden md:flex items-center space-x-1">
+<a href="index.html" class="px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">首页</a>
+<a href="index.html#features" class="px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">功能</a>
+<a href="docs.html" class="px-3 lg:px-4 py-2 rounded-lg text-sm bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white">文档</a>
+<a href="donate.html" class="px-3 lg:px-4 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">捐赠</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<button id="theme-toggle" class="p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block"></i><i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 block dark:hidden"></i></button>
+<a href="https://t.me/Emby_Pulse" target="_blank" class="p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="send" class="w-4 h-4 sm:w-5 sm:h-5"></i></a>
+<button id="mobile-menu-btn" class="md:hidden p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5"></i></button>
+</div>
+</div>
+</div>
+<div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800/50 bg-white/95 dark:bg-slate-950/95">
+<div class="px-4 py-3 space-y-1">
+<a href="index.html" class="block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">首页</a>
+<a href="index.html#features" class="block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">功能</a>
+<a href="docs.html" class="block px-4 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white">文档</a>
+<a href="donate.html" class="block px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">捐赠</a>
+</div>
+</div>
+</nav>
+
+<button id="sidebar-toggle" class="fixed bottom-4 right-4 z-40 md:hidden p-3 bg-primary-500 text-white rounded-full shadow-lg"><i data-lucide="list" class="w-5 h-5"></i></button>
+<div id="sidebar-overlay" class="fixed inset-0 z-30 bg-black/50 hidden md:hidden"></div>
+<div id="mobile-sidebar" class="fixed left-0 top-0 bottom-0 z-40 w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform -translate-x-full transition-transform duration-300 md:hidden overflow-y-auto pt-16">
+<div class="p-4">
+<div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">目录</div>
+<nav class="space-y-1" id="mobile-nav">
+<a href="#overview" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">概述</a>
+<a href="#quick-start" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">快速开始</a>
+<a href="#docker-deploy" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Docker 部署</a>
+<a href="#env-vars" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">环境变量</a>
+<a href="#db-mode" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">数据库模式</a>
+<a href="#emby-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Emby 配置</a>
+<a href="#risk-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">风控配置</a>
+<a href="#tg-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Telegram 配置</a>
+<a href="#tmdb-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">TMDB 配置</a>
+<a href="#mp-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">MoviePilot</a>
+<a href="#plugins" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">插件系统</a>
+<a href="#faq" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">常见问题</a>
+</nav>
+</div>
+</div>
+
+<div class="flex pt-14 sm:pt-16">
+<aside class="hidden md:block fixed left-0 top-14 sm:top-16 bottom-0 w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-y-auto">
+<div class="p-6">
+<div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">目录</div>
+<nav class="space-y-1" id="desktop-nav">
+<a href="#overview" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">概述</a>
+<a href="#quick-start" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">快速开始</a>
+<a href="#docker-deploy" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Docker 部署</a>
+<a href="#env-vars" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">环境变量</a>
+<a href="#db-mode" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">数据库模式</a>
+<a href="#emby-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Emby 配置</a>
+<a href="#risk-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">风控配置</a>
+<a href="#tg-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Telegram 配置</a>
+<a href="#tmdb-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">TMDB 配置</a>
+<a href="#mp-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">MoviePilot</a>
+<a href="#plugins" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">插件系统</a>
+<a href="#faq" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">常见问题</a>
+</nav>
+</div>
+</aside>
+
+<main class="flex-1 md:ml-64">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+<section id="overview" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">概述</h1>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed mb-8">EmbyPulse-Pro 是一款专为 Emby 服务器设计的专业级管理工具，提供风险管控、智能运维、用户管理、数据分析等全方位功能。通过 Docker 一键部署，支持本地模式和 API 模式两种运行方式。</p>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="bg-gradient-to-br from-primary-500/10 to-accent-500/10 border border-primary-500/20 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-2"><i data-lucide="zap" class="w-5 h-5 text-primary-500"></i><span class="font-semibold text-primary-500">快速部署</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Docker Compose 一键启动，3 分钟完成部署</p>
+</div>
+<div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-2"><i data-lucide="shield-check" class="w-5 h-5 text-green-500"></i><span class="font-semibold text-green-500">风险管控</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400">实时监控并发播放，自动拦截违规账号</p>
+</div>
+<div class="bg-gradient-to-br from-purple-500/10 to-violet-500/10 border border-purple-500/20 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-2"><i data-lucide="sparkles" class="w-5 h-5 text-purple-500"></i><span class="font-semibold text-purple-500">智能运维</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400">缺集扫描、追剧日历、自动合集等智能功能</p>
+</div>
+<div class="bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-orange-500/20 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-2"><i data-lucide="users" class="w-5 h-5 text-orange-500"></i><span class="font-semibold text-orange-500">用户管理</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400">积分系统、保号规则、用户画像分析</p>
+</div>
+</div>
+</section>
+
+<section id="quick-start" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center"><i data-lucide="rocket" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">快速开始</h1>
+</div>
+<div class="space-y-6">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+<div class="flex-1"><h3 class="font-semibold mb-1">安装 Playback Reporting 插件</h3><p class="text-sm text-slate-600 dark:text-slate-400">在 Emby 服务器中安装官方 Playback Reporting 插件，这是必须的前提条件。</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+<div class="flex-1"><h3 class="font-semibold mb-1">创建配置文件</h3><p class="text-sm text-slate-600 dark:text-slate-400">创建 docker-compose.yml 文件，配置必要的环境变量。</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+<div class="flex-1"><h3 class="font-semibold mb-1">启动服务</h3><p class="text-sm text-slate-600 dark:text-slate-400">运行 <code class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-xs">docker-compose up -d</code> 启动容器。</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+<div class="flex-1"><h3 class="font-semibold mb-1">访问后台</h3><p class="text-sm text-slate-600 dark:text-slate-400">打开浏览器访问 <code class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-xs">http://your-ip:10307</code> 进入管理后台。</p></div>
+</div>
+</div>
+</section>
+
+<section id="docker-deploy" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center"><i data-lucide="container" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">Docker Compose 部署</h1>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+<div class="bg-slate-200 dark:bg-slate-700 px-4 py-2 flex items-center justify-between">
+<span class="text-sm text-slate-500 dark:text-slate-400">docker-compose.yml</span>
+<button onclick="copyCode(this)" class="text-xs text-primary-500 hover:text-primary-600 flex items-center space-x-1"><i data-lucide="copy" class="w-4 h-4"></i><span>复制</span></button>
+</div>
+<pre class="p-4 text-sm overflow-x-auto"><code class="text-slate-700 dark:text-slate-300">version: '3.8'
+
+services:
+  emby-pulse:
+    image: zeyu8023/embypulse-pro:latest
+    container_name: emby-pulse
+    restart: unless-stopped
+    network_mode: host
+    
+    volumes:
+      - /volume1/docker/emby/data:/emby-data
+      - /volume1/docker/emby-pulse/config:/workspace/config
+      - /volume1/docker/emby-pulse/data:/workspace/data
+    
+    environment:
+      - TZ=Asia/Shanghai
+      - DB_PATH=/emby-data/playback_reporting.db
+      - EMBY_HOST=http://192.168.31.2:8096
+      - EMBY_API_KEY=your_api_key_here
+      # - FORCE_MIGRATE=1</code></pre>
+</div>
+<div class="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+<div class="flex items-start space-x-3">
+<i data-lucide="alert-circle" class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5"></i>
+<div class="text-sm">
+<p class="font-medium text-amber-800 dark:text-amber-200">重要提示</p>
+<ul class="mt-2 text-amber-700 dark:text-amber-300 space-y-1">
+<li>- network_mode: host 使用主机网络，默认后台端口 10307，用户中心端口 10308</li>
+<li>- EMBY_HOST 必须填写正确的 Emby 地址</li>
+<li>- 本地模式需要挂载 Emby 的 Playback Reporting 数据库</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="env-vars" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center"><i data-lucide="settings-2" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">环境变量</h1>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800">
+<tr><th class="px-4 py-3 text-left font-semibold">变量</th><th class="px-4 py-3 text-left font-semibold">说明</th><th class="px-4 py-3 text-left font-semibold">默认值</th><th class="px-4 py-3 text-left font-semibold">必填</th></tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">TZ</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">时区设置</td><td class="px-4 py-3 text-slate-500">Asia/Shanghai</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded">推荐</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PORT</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">容器内服务端口</td><td class="px-4 py-3 text-slate-500">10307</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">REQUEST_PORT</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">用户中心后台端口</td><td class="px-4 py-3 text-slate-500">10308</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">DB_PATH</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Playback Reporting 数据库路径</td><td class="px-4 py-3 text-slate-500">-</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">本地模式必填</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">FORCE_MIGRATE</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">强制迁移系统数据库</td><td class="px-4 py-3 text-slate-500">1</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_HOST</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby 服务器地址</td><td class="px-4 py-3 text-slate-500">-</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded">必填</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_API_KEY</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby API Key</td><td class="px-4 py-3 text-slate-500">-</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">选填</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="db-mode" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 flex items-center justify-center"><i data-lucide="database" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">数据库模式</h1>
+</div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-3"><i data-lucide="cloud" class="w-5 h-5 text-primary-500"></i><span class="font-semibold text-primary-500">API 模式</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">通过 API 穿透查询，部署最简单</p>
+<div class="text-xs text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg font-mono">不设置 DB_PATH</div>
+<p class="text-xs text-slate-500 dark:text-slate-500 mt-2">适用：极空间、云服务器、无法挂载数据库</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-3"><i data-lucide="hard-drive" class="w-5 h-5 text-green-500"></i><span class="font-semibold text-green-500">本地模式</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">直接读取数据库文件，性能最高</p>
+<div class="text-xs text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg font-mono">设置 DB_PATH=/path/to/db</div>
+<p class="text-xs text-slate-500 dark:text-slate-500 mt-2">适用：本地 Docker、可挂载 Emby 数据目录</p>
+</div>
+</div>
+</section>
+
+<section id="emby-config" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center"><i data-lucide="server" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">Emby 基础配置</h1>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800"><tr><th class="px-4 py-3 text-left font-semibold">配置项</th><th class="px-4 py-3 text-left font-semibold">说明</th></tr></thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">emby_host</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby 服务器地址</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">emby_api_key</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby API Key</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">webhook_token</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Webhook 安全令牌</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">emby_public_url</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">对外访问 Emby 的公网地址</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="risk-config" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-red-500 to-rose-500 flex items-center justify-center"><i data-lucide="shield" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">风控配置</h1>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800"><tr><th class="px-4 py-3 text-left font-semibold">配置项</th><th class="px-4 py-3 text-left font-semibold">说明</th></tr></thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">risk_max_concurrent</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">最大并发数限制</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">risk_action</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">违规处理方式：warn_only / warn_user / auto_ban</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">risk_vip_exempt</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">VIP 用户豁免开关</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="tg-config" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-sky-500 flex items-center justify-center"><i data-lucide="send" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">Telegram 配置</h1>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800"><tr><th class="px-4 py-3 text-left font-semibold">配置项</th><th class="px-4 py-3 text-left font-semibold">说明</th></tr></thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">tg_bot_token</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Telegram Bot Token</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">tg_chat_id</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">推送目标聊天 ID</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">proxy_url</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">网络代理（可选）</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="tmdb-config" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500 flex items-center justify-center"><i data-lucide="film" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">TMDB 配置</h1>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800"><tr><th class="px-4 py-3 text-left font-semibold">配置项</th><th class="px-4 py-3 text-left font-semibold">说明</th></tr></thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">tmdb_api_key</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">TMDB API Key，用于缺集扫描、合集同步</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="mp-config" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center"><i data-lucide="download" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">MoviePilot 配置</h1>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800"><tr><th class="px-4 py-3 text-left font-semibold">配置项</th><th class="px-4 py-3 text-left font-semibold">说明</th></tr></thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">moviepilot_url</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">MoviePilot 服务地址</td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">moviepilot_token</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">MoviePilot API Token</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="plugins" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-fuchsia-500 to-pink-500 flex items-center justify-center"><i data-lucide="puzzle" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">插件系统</h1>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mb-6">EmbyPulse-Pro 提供丰富的插件系统，按需启用扩展功能。</p>
+<div class="overflow-x-auto">
+<table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800">
+<tr><th class="px-4 py-3 text-left font-semibold">插件名称</th><th class="px-4 py-3 text-left font-semibold">功能描述</th><th class="px-4 py-3 text-left font-semibold">状态</th></tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">用户到期提醒</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">用户到期自动提醒通知</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded">Pro专享</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">115网盘转存</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">链接自动转存到115网盘</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded">内置</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">影巢资源中心</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">对接影巢资源站</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded">内置</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">保号规则</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">播放时长达标检测，自动处理不达标账号</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded">Pro专享</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">媒体库封面管理</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">快速更新媒体库封面图</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded">Pro专享</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">自定义通知模板</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">自定义通知风格（动漫风、幽默风等）</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded">内置</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">Emby智能合集</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">同步 TMDB 热门电影剧集，自动更新合集</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded">Pro专享</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3 font-medium">观影报告</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">多维报表生成，精美主题</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded">内置</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+<div class="flex items-start space-x-3">
+<i data-lucide="info" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i>
+<div class="text-sm text-blue-700 dark:text-blue-300">
+<p class="font-medium">说明</p>
+<p class="mt-1">插件可在后台「系统设置 > 插件管理」中启用或禁用。Pro专享插件需要授权才能使用。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center justify-center"><i data-lucide="help-circle" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">常见问题</h1>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="help-circle" class="w-4 h-4 mr-2 text-primary-500"></i>是否必须安装 Playback Reporting 插件？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">是的。无论使用本地模式还是 API 模式，Emby 都必须安装此官方插件以生成播放历史数据。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="help-circle" class="w-4 h-4 mr-2 text-primary-500"></i>API 模式和本地模式的区别？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400"><strong class="text-slate-900 dark:text-white">本地模式</strong>：直接读取数据库文件，性能最高，需要挂载数据库路径。<strong class="text-slate-900 dark:text-white">API 模式</strong>：通过 API 穿透查询，部署最简单，无需挂载数据库。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="help-circle" class="w-4 h-4 mr-2 text-primary-500"></i>Pro 版与普通版的区别？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Pro 版独占风险管控、积分系统、智能合集、保号规则、Telegram机器人、注册码管理等功能。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="help-circle" class="w-4 h-4 mr-2 text-primary-500"></i>影巢 API Key 如何获取？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">登录 <a href="https://hdhive.com" target="_blank" class="text-primary-500 hover:underline">hdhive.com</a> 后，进入个人设置 > API 管理创建。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="help-circle" class="w-4 h-4 mr-2 text-primary-500"></i>为什么无法登录后台？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">请检查 <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">EMBY_HOST</code> 是否配置正确，确保地址可访问。账号密码为 Emby 管理员账号密码。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="alert-triangle" class="w-4 h-4 mr-2 text-amber-500"></i>TMDB API 配置无效？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">1. 确认 TMDB API Key 是否正确填写；2. 检查网络是否能访问 api.themoviedb.org；3. 如在国内服务器，需配置代理 <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">TMDB_PROXY</code>；4. 验证 API Key 是否有效，可在 TMDB 官网测试。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="alert-triangle" class="w-4 h-4 mr-2 text-amber-500"></i>Telegram Bot 无法连接？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">1. 确认 Bot Token 格式正确（数字:字母数字组合）；2. 检查 Chat ID 是否正确；3. 如在国内服务器，需配置代理 <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">proxy_url</code>；4. 先用浏览器测试 api.telegram.org 是否可访问。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="alert-triangle" class="w-4 h-4 mr-2 text-amber-500"></i>MoviePilot 连接失败？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">1. 确认 MoviePilot 服务地址正确（包含端口号）；2. 检查 API Token 是否有效；3. 确保网络可达 MoviePilot 服务；4. 查看 EmbyPulse 日志获取详细错误信息。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="alert-triangle" class="w-4 h-4 mr-2 text-amber-500"></i>代理配置无效？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">代理地址格式应为：<code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">http://ip:port</code> 或 <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">socks5://ip:port</code>。确认代理服务已启动且端口正确。如使用 Clash 等工具，确保开启了允许局域网连接。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="alert-triangle" class="w-4 h-4 mr-2 text-amber-500"></i>数据库迁移失败？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">1. 首次部署可设置 <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">FORCE_MIGRATE=1</code> 强制迁移；2. 检查 /workspace/data 目录权限是否正确；3. 查看容器日志：<code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">docker logs emby-pulse</code>；4. 确保挂载目录存在且有写入权限。</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-white"><i data-lucide="alert-triangle" class="w-4 h-4 mr-2 text-amber-500"></i>播放数据不显示？</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">1. 确认 Emby 已安装 Playback Reporting 插件；2. 检查插件是否已启用且有数据记录；3. 本地模式确认 DB_PATH 路径正确；4. API 模式确认 Emby API Key 有效；5. 播放一些内容后等待几分钟刷新。</p>
+</div>
+</div>
+</section>
+
+</div>
+</main>
+</div>
+
+<footer class="md:ml-64 py-8 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 dark:text-slate-500 text-sm">
+<p>EmbyPulse-Pro Team 2024-2025</p>
+</div>
+</footer>
+
+<script>
+lucide.createIcons();
+
+// Theme toggle
+const themeToggle=document.getElementById('theme-toggle'),html=document.documentElement,logoImg=document.getElementById('logo-img');
+const getThemePreference=()=>{if(typeof localStorage!=='undefined'&&localStorage.getItem('theme'))return localStorage.getItem('theme');return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'};
+const setTheme=theme=>{if(theme==='dark'){html.classList.add('dark');if(logoImg)logoImg.src='img/logo-light.png';}else{html.classList.remove('dark');if(logoImg)logoImg.src='img/logo-app.png';}localStorage.setItem('theme',theme);};
+setTheme(getThemePreference());
+themeToggle.addEventListener('click',()=>{const newTheme=html.classList.contains('dark')?'light':'dark';setTheme(newTheme);lucide.createIcons();});
+
+// Mobile menu
+const mobileMenuBtn=document.getElementById('mobile-menu-btn'),mobileMenu=document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('hidden'));
+mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>mobileMenu.classList.add('hidden')));
+
+// Mobile sidebar
+const sidebarToggle=document.getElementById('sidebar-toggle'),mobileSidebar=document.getElementById('mobile-sidebar'),sidebarOverlay=document.getElementById('sidebar-overlay');
+sidebarToggle.addEventListener('click',()=>{mobileSidebar.classList.toggle('-translate-x-full');sidebarOverlay.classList.toggle('hidden');});
+sidebarOverlay.addEventListener('click',()=>{mobileSidebar.classList.add('-translate-x-full');sidebarOverlay.classList.add('hidden');});
+document.getElementById('mobile-nav').querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{mobileSidebar.classList.add('-translate-x-full');sidebarOverlay.classList.add('hidden');});});
+
+// Sidebar active state
+const sidebarLinks=document.querySelectorAll('.sidebar-link');
+const sections=document.querySelectorAll('section[id]');
+const updateSidebar=()=>{
+let current='';
+sections.forEach(section=>{const sectionTop=section.offsetTop;if(window.scrollY>=sectionTop-120){current=section.getAttribute('id');}});
+sidebarLinks.forEach(link=>{link.classList.remove('active');if(link.getAttribute('href')==='[object Object]'+current){link.classList.add('active');}else if(link.getAttribute('href')==='[object Object]'+current){link.classList.add('active');}});
+};
+window.addEventListener('scroll',updateSidebar);
+updateSidebar();
+
+// Copy code
+function copyCode(btn){
+const code=btn.closest('.bg-slate-50,.dark\\:bg-slate-900').querySelector('code').innerText;
+navigator.clipboard.writeText(code);
+btn.innerHTML='<i data-lucide="check" class="w-4 h-4"></i><span>已复制</span>';
+lucide.createIcons();
+setTimeout(()=>{btn.innerHTML='<i data-lucide="copy" class="w-4 h-4"></i><span>复制</span>';lucide.createIcons();},2000);
+}
+</script>
+</body>
+</html>
