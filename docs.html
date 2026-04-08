@@ -203,16 +203,56 @@ services:
 <div class="overflow-x-auto">
 <table class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm">
 <thead class="bg-slate-50 dark:bg-slate-800">
-<tr><th class="px-4 py-3 text-left font-semibold">变量</th><th class="px-4 py-3 text-left font-semibold">说明</th><th class="px-4 py-3 text-left font-semibold">默认值</th><th class="px-4 py-3 text-left font-semibold">必填</th></tr>
+<tr>
+<th class="px-4 py-3 text-left font-semibold">变量</th>
+<th class="px-4 py-3 text-left font-semibold">说明</th>
+<th class="px-4 py-3 text-left font-semibold">默认值</th>
+<th class="px-4 py-3 text-left font-semibold">必填</th>
+</tr>
 </thead>
 <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">TZ</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">时区设置</td><td class="px-4 py-3 text-slate-500">Asia/Shanghai</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded">推荐</span></td></tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PORT</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">容器内服务端口</td><td class="px-4 py-3 text-slate-500">10307</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td></tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">REQUEST_PORT</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">用户中心后台端口</td><td class="px-4 py-3 text-slate-500">10308</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td></tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">DB_PATH</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Playback Reporting 数据库路径</td><td class="px-4 py-3 text-slate-500">-</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">本地模式必填</span></td></tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">FORCE_MIGRATE</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">强制迁移系统数据库。⚠️ 仅在需要迁移数据库时填写，迁移完成后请务必删除该变量，否则每次启动都会覆盖数据库</td><td class="px-4 py-3 text-slate-500">-</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td></tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_HOST</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby 服务器地址</td><td class="px-4 py-3 text-slate-500">-</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded">必填</span></td></tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_API_KEY</code></td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby API Key</td><td class="px-4 py-3 text-slate-500">-</td><td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded">必填</span></td></tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">TZ</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">时区设置</td>
+<td class="px-4 py-3 text-slate-500">Asia/Shanghai</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded">推荐</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PORT</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">容器内服务端口</td>
+<td class="px-4 py-3 text-slate-500">10307</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">REQUEST_PORT</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">用户中心后台端口</td>
+<td class="px-4 py-3 text-slate-500">10308</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">DB_PATH</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">Playback Reporting 数据库路径</td>
+<td class="px-4 py-3 text-slate-500">-</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">本地模式必填</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">FORCE_MIGRATE</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">强制迁移系统数据库<div class="text-xs text-amber-600 dark:text-amber-400 mt-1">⚠️ 仅迁移时填写，完成后务必删除</div></td>
+<td class="px-4 py-3 text-slate-500">1</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_HOST</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby 服务器地址</td>
+<td class="px-4 py-3 text-slate-500">-</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded">必填</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_API_KEY</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby API Key</td>
+<td class="px-4 py-3 text-slate-500">-</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded">必填</span></td>
+</tr>
 </tbody>
 </table>
 </div>
