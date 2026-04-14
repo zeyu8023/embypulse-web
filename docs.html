@@ -377,6 +377,7 @@ services:
 <li>- 删除账号</li>
 <li>- 开启/关闭本地认证</li>
 <li>- 禁用 Emby 管理员登录</li>
+<li>- 绑定/解绑 TOTP 两步验证</li>
 </ul>
 </div>
 <div class="text-xs bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
@@ -386,7 +387,71 @@ services:
 <li><strong>子账号：</strong>只能修改自己密码，不能管理其他账号</li>
 <li><strong>权限控制：</strong>子账号可配置19个页面的访问权限</li>
 <li><strong>侧边栏：</strong>根据权限动态隐藏菜单项</li>
+<li><strong>两步验证：</strong>本地账号支持 TOTP 安全验证</li>
 </ul>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-6">
+<h3 class="font-semibold mb-4 flex items-center text-slate-900 dark:text-white"><i data-lucide="shield-check" class="w-5 h-5 mr-2 text-green-500"></i>TOTP 两步验证</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">本地账号支持 TOTP 两步验证，登录时除了密码，还需要输入验证器应用生成的 6 位动态验证码，大幅提升账号安全性。</p>
+
+<div class="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg mb-4">
+<div class="flex items-start space-x-3">
+<i data-lucide="smartphone" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+<div class="text-sm text-green-700 dark:text-green-300">
+<p class="font-medium">支持的验证器应用</p>
+<div class="mt-3 overflow-x-auto">
+<table class="w-full text-xs">
+<thead><tr><th class="text-left font-medium">验证器</th><th class="text-left font-medium">平台</th></tr></thead>
+<tbody class="divide-y divide-green-200 dark:divide-green-700">
+<tr><td class="py-1.5">Google Authenticator</td><td class="py-1.5 text-green-600 dark:text-green-400">iOS / Android</td></tr>
+<tr><td class="py-1.5">Microsoft Authenticator</td><td class="py-1.5 text-green-600 dark:text-green-400">iOS / Android / Windows</td></tr>
+<tr><td class="py-1.5">Authy</td><td class="py-1.5 text-green-600 dark:text-green-400">iOS / Android</td></tr>
+<tr><td class="py-1.5">1Password</td><td class="py-1.5 text-green-600 dark:text-green-400">iOS / Android / macOS / Windows</td></tr>
+<tr><td class="py-1.5">其他 TOTP 兼容应用</td><td class="py-1.5 text-green-600 dark:text-green-400">所有平台</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 mb-4">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">🔐 登录流程</p>
+<div class="space-y-3">
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400">输入用户名和密码</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400">系统检测账号启用 TOTP，显示验证码输入框</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">3</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400">打开验证器应用获取 6 位动态验证码</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">4</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400">输入验证码完成登录</div>
+</div>
+</div>
+</div>
+
+<div class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+<div class="flex items-start space-x-3">
+<i data-lucide="lightbulb" class="w-5 h-5 text-amber-500 flex-shrink-0"></i>
+<div class="text-sm text-amber-700 dark:text-amber-300">
+<p class="font-medium">💡 安全提示</p>
+<ul class="mt-2 space-y-1.5">
+<li>- 绑定后请保存密钥，更换手机时可用密钥重新绑定</li>
+<li>- 验证码每 30 秒刷新一次</li>
+<li>- 允许前后 1 个时间窗口的验证码（防止时钟偏差）</li>
+<li>- 建议管理员账号启用两步验证，提升安全性</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
