@@ -52,6 +52,7 @@
 <a href="#quick-start" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">快速开始</a>
 <a href="#docker-deploy" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Docker 部署</a>
 <a href="#env-vars" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">环境变量</a>
+<a href="#auth-guide" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">账号登录</a>
 <a href="#features-detail" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">功能介绍</a>
 <a href="#db-mode" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">数据库模式</a>
 <a href="#emby-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Emby 配置</a>
@@ -79,6 +80,7 @@
 <a href="#quick-start" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">快速开始</a>
 <a href="#docker-deploy" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Docker 部署</a>
 <a href="#env-vars" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">环境变量</a>
+<a href="#auth-guide" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">账号登录</a>
 <a href="#features-detail" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">功能介绍</a>
 <a href="#db-mode" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">数据库模式</a>
 <a href="#emby-config" class="sidebar-link block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300">Emby 配置</a>
@@ -284,6 +286,109 @@ services:
 </tr>
 </tbody>
 </table>
+</div>
+</section>
+
+<section id="auth-guide" class="mb-12">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 flex-shrink-0 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center"><i data-lucide="user-check" class="w-5 h-5 text-white"></i></div>
+<h1 class="text-2xl sm:text-3xl font-bold">账号登录说明</h1>
+</div>
+
+<p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mb-6">EmbyPulse-Pro 支持两种登录方式：Emby 管理员账号登录和本地管理员账号登录。可根据实际需求灵活配置。</p>
+
+<div class="grid sm:grid-cols-2 gap-4 mb-6">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-3"><i data-lucide="server" class="w-5 h-5 text-emerald-500"></i><span class="font-semibold text-emerald-500">Emby 账号登录</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">使用 Emby 服务器的管理员账号密码登录，适合已有 Emby 服务器的场景。</p>
+<div class="text-xs text-slate-500 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
+<p class="mb-1"><strong>配置要求：</strong></p>
+<ul class="space-y-1 ml-2">
+<li>- 必须配置 <code class="text-primary-500">EMBY_HOST</code></li>
+<li>- 账号密码为 Emby 管理员账号</li>
+</ul>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<div class="flex items-center space-x-2 mb-3"><i data-lucide="user" class="w-5 h-5 text-primary-500"></i><span class="font-semibold text-primary-500">本地账号登录</span></div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">使用独立创建的本地管理员账号登录，不依赖 Emby 服务器，适合独立部署场景。</p>
+<div class="text-xs text-slate-500 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
+<p class="mb-1"><strong>配置要求：</strong></p>
+<ul class="space-y-1 ml-2">
+<li>- <code class="text-primary-500">LOCAL_AUTH_ENABLED=true</code></li>
+<li>- 配置 <code class="text-primary-500">LOCAL_ADMIN_USERNAME</code></li>
+<li>- 配置 <code class="text-primary-500">LOCAL_ADMIN_PASSWORD</code></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-6">
+<h3 class="font-semibold mb-4 flex items-center text-slate-900 dark:text-white"><i data-lucide="shield-off" class="w-5 h-5 mr-2 text-red-500"></i>禁用 Emby 管理员登录</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">开启本地账号后，可在后台系统设置中禁用 Emby 管理员账号登录，实现独立管理。</p>
+<div class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg mb-4">
+<div class="flex items-start space-x-3">
+<i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 flex-shrink-0"></i>
+<div class="text-sm text-amber-700 dark:text-amber-300">
+<p class="font-medium">启用条件</p>
+<ul class="mt-2 space-y-1">
+<li>- 必须先开启本地管理员账号</li>
+<li>- 禁用 Emby 登录开关仅在本地认证开启时显示</li>
+<li>- 禁用后 Emby 管理员账号将无法登录后台</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">📝 使用流程</p>
+<div class="space-y-3">
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-primary-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400"><strong>开启本地认证：</strong>设置环境变量 <code class="text-primary-500 bg-slate-100 dark:bg-slate-700 px-1 rounded">LOCAL_AUTH_ENABLED=true</code></div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-primary-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400"><strong>创建本地账号：</strong>配置用户名和密码环境变量</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-primary-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">3</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400"><strong>登录后台：</strong>使用本地账号登录管理后台</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 rounded-full bg-primary-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">4</div>
+<div class="flex-1 text-sm text-slate-600 dark:text-slate-400"><strong>禁用 Emby 登录：</strong>在系统设置 → 账号管理中开启「禁用 Emby 登录」开关</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+<h3 class="font-semibold mb-4 flex items-center text-slate-900 dark:text-white"><i data-lucide="settings-2" class="w-5 h-5 mr-2 text-primary-500"></i>后台账号管理功能</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">开启本地认证后，可在后台设置页面的「账号管理」卡片中管理本地账号：</p>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="text-xs bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+<p class="font-medium text-slate-700 dark:text-slate-300 mb-2">✅ 支持的操作</p>
+<ul class="text-slate-600 dark:text-slate-400 space-y-1.5">
+<li>- 创建新的本地账号</li>
+<li>- 编辑账号用户名、密码</li>
+<li>- 设置账号角色（管理员/子账号）</li>
+<li>- 配置子账号权限</li>
+<li>- 启用/禁用账号</li>
+<li>- 删除账号</li>
+<li>- 开启/关闭本地认证</li>
+<li>- 禁用 Emby 管理员登录</li>
+</ul>
+</div>
+<div class="text-xs bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+<p class="font-medium text-slate-700 dark:text-slate-300 mb-2">🔐 角色说明</p>
+<ul class="text-slate-600 dark:text-slate-400 space-y-1.5">
+<li><strong>管理员：</strong>拥有全部权限，可管理其他账号</li>
+<li><strong>子账号：</strong>只能修改自己密码，不能管理其他账号</li>
+<li><strong>权限控制：</strong>子账号可配置19个页面的访问权限</li>
+<li><strong>侧边栏：</strong>根据权限动态隐藏菜单项</li>
+</ul>
+</div>
+</div>
 </div>
 </section>
 
