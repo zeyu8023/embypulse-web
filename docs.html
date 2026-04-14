@@ -178,8 +178,16 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - DB_PATH=/emby-data/playback_reporting.db
-      - EMBY_HOST=http://192.168.31.2:8096
-      - EMBY_API_KEY=your_api_key_here
+      
+      # 本地账号配置（可选，开启后可独立登录）
+      - LOCAL_AUTH_ENABLED=true
+      - LOCAL_ADMIN_USERNAME=admin
+      - LOCAL_ADMIN_PASSWORD=your_password
+      
+      # Emby 配置（本地账号和 Emby Host 必填其一）
+      # - EMBY_HOST=http://192.168.31.2:8096
+      # - EMBY_API_KEY=your_api_key_here
+      
       # - FORCE_MIGRATE=1</code></pre></div>
 </div>
 <div class="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
@@ -189,7 +197,8 @@ services:
 <p class="font-medium text-amber-800 dark:text-amber-200">重要提示</p>
 <ul class="mt-2 text-amber-700 dark:text-amber-300 space-y-1">
 <li>- network_mode: host 使用主机网络，默认后台端口 10307，用户中心端口 10308</li>
-<li>- EMBY_HOST 必须填写正确的 Emby 地址</li>
+<li>- 本地账号和 Emby Host 必须填写其一，否则无法登录后台</li>
+<li>- 开启本地账号后，Emby API Key 可在后台设置中配置</li>
 <li>- 本地模式需要挂载 Emby 的 Playback Reporting 数据库</li>
 </ul>
 </div>
@@ -238,22 +247,40 @@ services:
 <td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">本地模式必填</span></td>
 </tr>
 <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">LOCAL_AUTH_ENABLED</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">开启本地管理账号<div class="text-xs text-slate-500 mt-1">开启后可用独立账号登录，不依赖 Emby</div></td>
+<td class="px-4 py-3 text-slate-500">false</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">LOCAL_ADMIN_USERNAME</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">本地管理员用户名<div class="text-xs text-amber-600 dark:text-amber-400 mt-1">⚠️ 开启本地账号时必填</div></td>
+<td class="px-4 py-3 text-slate-500">-</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">本地账号必填</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">LOCAL_ADMIN_PASSWORD</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">本地管理员密码<div class="text-xs text-amber-600 dark:text-amber-400 mt-1">⚠️ 开启本地账号时必填</div></td>
+<td class="px-4 py-3 text-slate-500">-</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">本地账号必填</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_HOST</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby 服务器地址<div class="text-xs text-slate-500 mt-1">本地账号和 Emby Host 必填其一</div></td>
+<td class="px-4 py-3 text-slate-500">-</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">条件必填</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_API_KEY</code></td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby API Key<div class="text-xs text-slate-500 mt-1">可在后台设置中配置，核心功能依赖</div></td>
+<td class="px-4 py-3 text-slate-500">-</td>
+<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded">核心功能必填</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
 <td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">FORCE_MIGRATE</code></td>
 <td class="px-4 py-3 text-slate-600 dark:text-slate-400">强制迁移系统数据库<div class="text-xs text-amber-600 dark:text-amber-400 mt-1">⚠️ 仅迁移时填写，完成后务必删除</div></td>
 <td class="px-4 py-3 text-slate-500">1</td>
 <td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded">可选</span></td>
-</tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_HOST</code></td>
-<td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby 服务器地址</td>
-<td class="px-4 py-3 text-slate-500">-</td>
-<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded">必填</span></td>
-</tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-<td class="px-4 py-3"><code class="text-primary-500 text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">EMBY_API_KEY</code></td>
-<td class="px-4 py-3 text-slate-600 dark:text-slate-400">Emby API Key</td>
-<td class="px-4 py-3 text-slate-500">-</td>
-<td class="px-4 py-3"><span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded">必填</span></td>
 </tr>
 </tbody>
 </table>
